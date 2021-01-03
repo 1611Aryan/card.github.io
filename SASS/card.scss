@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(229, 229, 230);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    perspective: 500px;
+    #pages {
+        width: 40%;
+        height: 90%;
+        background-color: #ffffff;
+        box-shadow: 2px 5px 25px 6px rgba(0, 0, 0, 0.5);
+        perspective: 1500px;
+        perspective-origin: left;
+        position: relative;
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #page1 {
+            width: 100%;
+            z-index: 3;
+            background-color: #1E3947;
+            box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.4), inset -2px 2px 5px rgba(255, 255, 255, 0.4), inset 2px -2px 5px rgba(255, 255, 255, 0.4), inset -2px -2px 5px rgba(255, 255, 255, 0.4);
+            border: 5px solid #fff;
+            .logo {
+                position: absolute;
+                top: 1rem;
+                left: 1.5rem;
+                width: 15%;
+            }
+            p {
+                width: 50%;
+                color: #91c2c3;
+                font-size: 3rem;
+                position: absolute;
+                top: 50%;
+                left: 3rem;
+                transform: translateY(-50%) translateZ(50px);
+                animation: lsd 3s ease infinite alternate;
+            }
+            #balloon1 {
+                width: 35%;
+                position: absolute;
+                top: 2rem;
+                right: 2rem;
+                animation: float 1s linear infinite alternate;
+            }
+            #balloon2 {
+                width: 40%;
+                position: absolute;
+                bottom: 2rem;
+                left: 2.5rem;
+                animation: float 1s linear infinite alternate;
+            }
+            .confetti {
+                width: 250%;
+                position: absolute;
+                top: -110%;
+                left: 0;
+                animation: confetti 4s ease-in-out infinite;
+            }
+        }
+        #page2 {
+            z-index: 1;
+            background-color: #ffb9f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            #banner {
+                z-index: -1;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                filter: drop-shadow(2px 4px 5px rgba(0, 0, 0, 0.5));
+                animation: wind 2s ease-in-out infinite alternate;
+                animation-delay: 2s;
+                transform-origin: top;
+            }
+            #frame {
+                background-color: #000;
+                width: 80%;
+                height: 60%;
+                box-shadow: 2px 5px 25px rgba(0, 0, 0, 0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                perspective: 500px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    animation: spatial 2s ease infinite alternate;
+                    background-size: contain;
+                    box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.8);
+                }
+            }
+        }
+    }
+}
+
+.pageUp {
+    animation: pageUp 1.5s ease-in-out forwards;
+    transform-origin: left;
+}
+
+.pageDown {
+    animation: pageDown 1.5s ease-in-out forwards;
+    transform-origin: left;
+}
+
+@keyframes confetti {
+    to {
+        top: 0;
+    }
+}
+
+@keyframes float {
+    to {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes brighter {
+    to {
+        fill: orange;
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes lsd {
+    to {
+        filter: hue-rotate(270deg);
+    }
+}
+
+@keyframes wind {
+    to {
+        transform: rotateX(45deg);
+    }
+}
+
+@keyframes pageUp {
+    to {
+        transform: rotateY(-90deg);
+    }
+}
+
+@keyframes pageDown {
+    from {
+        transform: rotateY(-90deg);
+    }
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes spatial {
+    to {
+        transform: translateZ(100px);
+    }
+}
